@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c9958ba8-93ab-46cf-84dd-3f579dea79e4" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	
+	<flow name="createaccountFlow1" doc:id="af35720b-2a1e-41ff-b5bb-28581434a6c5" >
+		<http:listener doc:name="Listener" doc:id="30087b6a-2058-455f-9287-2e3abbc1087c" config-ref="HTTP_Listener_config" path="/createAccount"/>
+		<set-payload value="account crated successfully" doc:name="Set Payload" doc:id="180aaa92-5a49-4d58-836f-bc2a037e21c4" />
+		<logger level="INFO" doc:name="Logger" doc:id="87137686-50e9-4b96-ab70-7fdce8ae5845" message="Final.....Responce...#[payload]"/>
+	</flow>
+</mule>
